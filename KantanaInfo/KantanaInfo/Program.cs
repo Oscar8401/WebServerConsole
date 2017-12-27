@@ -28,8 +28,9 @@ namespace KatanaInfo
         public void Configuration(IAppBuilder app)
         {
 
-            app.Use<HelloWorldComponent>();
-            //app.UseWelcomePage();
+            //app.Use<HelloWorldComponent>();
+
+            app.UseWelcomePage();
 
             //app.Run(ctx =>
             //{
@@ -38,21 +39,21 @@ namespace KatanaInfo
             //);
         }
     }
-    public class HelloWorldComponent
-    {
-        AppFunc _next;
-        public HelloWorldComponent(AppFunc next)
-        {
-            _next = next;
-        }
-        public  Task Invoke(IDictionary<string, object> environment)
-        {
-            //await _next(environment);
-            var response = environment["owin.ResponseBody"] as Stream;
-            using (var writer = new StreamWriter(response))
-            {
-                return writer.WriteLineAsync("Hello!");
-            }
-        }
-    }
+    //public class HelloWorldComponent
+    //{
+    //    AppFunc _next;
+    //    public HelloWorldComponent(AppFunc next)
+    //    {
+    //        _next = next;
+    //    }
+    //    public  Task Invoke(IDictionary<string, object> environment)
+    //    {
+    //        //await _next(environment);
+    //        var response = environment["owin.ResponseBody"] as Stream;
+    //        using (var writer = new StreamWriter(response))
+    //        {
+    //            return writer.WriteLineAsync("Hello!");
+    //        }
+    //    }
+    //}
 }
